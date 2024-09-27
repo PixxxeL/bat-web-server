@@ -1,11 +1,9 @@
 # Убедитесь, что вы запускаете PowerShell с правами администратора
 
 # Укажите порт и путь к директории, которую хотите обслуживать
-#$port = 8080
 param (
     [int]$port = 8080
 )
-#$path = "C:\Users\-\Downloads"
 #$path = $PWD.Path
 $path = Split-Path -Path $MyInvocation.MyCommand.Path -Parent
 
@@ -13,7 +11,7 @@ $path = Split-Path -Path $MyInvocation.MyCommand.Path -Parent
 $listener = New-Object System.Net.HttpListener
 $listener.Prefixes.Add("http://127.0.0.1:$port/")
 $listener.Start()
-Write-Host "Сервер запущен на http://localhost:$port/"
+Write-Host "Сервер запущен на http://127.0.0.1:$port/"
 Write-Host "и слушает папку: $path/"
 
 try {
